@@ -42,7 +42,7 @@ final class ResultsTableViewModel: ObservableObject {
     
     //MARK: - Private Methods
 
-    private func update(_ score: Score) {
+    private func update(_ score: ScoreModel) {
 //        repository.update(score)
     }
     

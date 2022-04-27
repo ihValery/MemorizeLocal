@@ -1,5 +1,5 @@
 //
-//  CardScoreView.swift
+//  OneCardScoreView.swift
 //  FirebaseProfile
 //
 //  Created by Валерий Игнатьев on 10.06.21.
@@ -7,16 +7,19 @@
 
 import SwiftUI
 
-struct CardScoreView: View {
-    
-    //MARK: - Properties
+//MARK: - OneCardScoreView
 
-    var scoreViewModel: ScoreViewModel
+struct OneCardScoreView: View {
     
-    @State private var viewState = CGSize.zero
+    //MARK: Properties
+
+    @State private var gestureState = CGSize.zero
+    
     @State private var showAlert = false
-
-    //MARK: - Body
+    
+    private var scoreViewModel: ScoreViewModel
+    
+    //MARK: Body
 
     var body: some View {
         ZStack {
@@ -26,12 +29,12 @@ struct CardScoreView: View {
                     .font(.largeTitle)
                     .foregroundColor(.red)
                     .offset(x: 40)
-                    .offset(x: viewState.width)
+                    .offset(x: gestureState.width)
             }
             
             ZStack {
                 HStack {
-                    Text(scoreViewModel.score.theme)
+                    Text(scoreViewModel.scoreSheet.theme)
                         .font(.system(size: isWithBangs ? 60 : 50))
                     
                     VStack(alignment: .leading) {
@@ -46,7 +49,7 @@ struct CardScoreView: View {
                 
                 HStack {
                     Spacer()
-                    Text(String(scoreViewModel.score.maxScore))
+                    Text(String(scoreViewModel.scoreSheet.maxScore))
                         .font(.system(size: isWithBangs ? 50 : 40).bold())
                         .opacity(0.7)
                 }
@@ -55,16 +58,15 @@ struct CardScoreView: View {
             .padding(.horizontal, 40)
             .background(BackgroundCardScoreView())
             .padding(.vertical, 35).padding(.leading, 10)
-            .offset(x: viewState.width)
+            .offset(x: gestureState.width)
             
             .gesture(
                 DragGesture()
-                
-                    .onChanged { value in
-                        if value.translation.width < 0 {
-                            viewState = value.translation
+                    .onChanged { gesture in
+                        if gesture.translation.width < 0 {
+                            gestureState = gesture.translation
                         } else {
-                            viewState = .zero
+                            gestureState = .zero
                         }
                     }
                 
@@ -72,7 +74,7 @@ struct CardScoreView: View {
                         if value.location.x < value.startLocation.x - 50 {
                             showAlert.toggle()
                         }
-                        viewState = .zero
+                        gestureState = .zero
                     }
             )
             
@@ -85,17 +87,17 @@ struct CardScoreView: View {
         }
     }
     
+    //MARK: Initializer
+    
+    init(scoreViewModel: ScoreViewModel) {
+        self.scoreViewModel = scoreViewModel
+    }
 }
 
-//struct CardScoreView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let indexFoodCard = 5
-//
-//        if indexFoodCard < testData.count {
-//            let score = testData[indexFoodCard]
-//            CardScoreView(scoreViewModel: ScoreViewModel(score: score))
-//        } else {
-//            CardScoreView(scoreViewModel: ScoreViewModel(score: <#T##Score#>))
-//        }
-//    }
-//}
+//MARK: - PreviewProvider
+
+struct CardScoreView_Previews: PreviewProvider {
+    static var previews: some View {
+        OneCardScoreView(scoreViewModel: ScoreViewModel())
+    }
+}

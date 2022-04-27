@@ -23,11 +23,11 @@ struct ScoreTableMainView: View {
             VStack {
                 GeometryReader { gr in
                     ScrollView {
-                        ForEach(scoreListViewModel.scoreViewModels) { item in
-                            CardScoreView(scoreViewModel: item)
-                                .offset(y: onAnimation ? 0 : getScreeSize().height)
-                        }
-                        .offset(y: 25)
+//                        ForEach(scoreListViewModel.scoreViewModels, id: \.self) { item in
+//                            CardScoreView(scoreViewModel: item)
+//                                .offset(y: onAnimation ? 0 : getScreeSize().height)
+//                        }
+//                        .offset(y: 25)
                     }
                     .frame(height: gr.size.height - 165)
                 }

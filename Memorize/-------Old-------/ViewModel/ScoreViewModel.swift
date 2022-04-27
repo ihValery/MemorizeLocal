@@ -8,21 +8,23 @@
 import Foundation
 import Combine
 
-final class ScoreViewModel: ObservableObject, Identifiable {
+//MARK: - ScoreViewModel
+
+final class ScoreViewModel: ObservableObject {
     
-    //MARK: - Properties
+    //MARK: Properties
     
-    @Published var score: Score
+    @Published var scoreSheet: ScoreModel
     
-    var id = ""
+//    var id = ""
     
 //    private let repository = ScoreRepository()
-    private var cancellabel: Set<AnyCancellable> = []
+//    private var cancellabel: Set<AnyCancellable> = []
     
-    //MARK: - Initializer
+    //MARK: Initializer
     
-    init(score: Score) {
-        self.score = Score(theme: "no", maxScore: 0)
+    init() {
+        self.scoreSheet = ScoreModel("no", maxScore: 0)
 //        self.score = score
         //Настройте привязку score между карточкой id и моделью представления id.
         //Затем сохраните объект cancellables чтобы его можно было отменить позже.
@@ -33,7 +35,7 @@ final class ScoreViewModel: ObservableObject, Identifiable {
 //            .store(in: &cancellabel)
     }
     
-    //MARK: - Public Methods
+    //MARK: Public Methods
     
     func remove() {
 //        repository.remove(score)
@@ -42,6 +44,12 @@ final class ScoreViewModel: ObservableObject, Identifiable {
     func dateToString() -> String {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "dd/MM/y  HH:mm"
-        return timeFormatter.string(from: score.date)
+        return timeFormatter.string(from: scoreSheet.date)
+    }
+    
+    //MARK: Private Methods
+    
+    private func getScoreData() {
+        
     }
 }

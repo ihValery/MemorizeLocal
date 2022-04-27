@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//MARK: ProFileView
+//MARK: - ProFileView
 
 struct ProFileView: View {
     
@@ -28,6 +28,7 @@ struct ProFileView: View {
     private let userEmail: String = InternalConstant.email
     
     private let paddingTop: CGFloat = 30
+    
     private var sizeImage: CGFloat {
         isWithBangs ? 180 : 160
     }
