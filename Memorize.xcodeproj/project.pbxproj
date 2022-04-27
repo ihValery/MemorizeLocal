@@ -302,6 +302,7 @@
 		80693AE528196DAD00F3B2D4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8008C4D0278604FD00C634B7 /* GlobalConstant.swift */,
 				8088FB8126742AE500A4B1B7 /* ScoreModel.swift */,
 			);
 			path = Model;
@@ -393,7 +394,6 @@
 			children = (
 				80CD7619277CDB380054C33E /* Data */,
 				8088FB832674315900A4B1B7 /* Shape */,
-				8008C4D0278604FD00C634B7 /* GlobalConstant.swift */,
 				80BE0661262D8B3F00EAF9C4 /* GameBoard.swift */,
 				80ECBFA3266581F300684F6C /* SignButtonStyle.swift */,
 				808699C6264695D700DAD8BE /* Cardify.swift */,

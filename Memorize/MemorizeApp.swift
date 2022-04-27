@@ -10,13 +10,13 @@ import SwiftUI
 
 @main
 struct MemorizeApp: App {
-//    init() {
-//        FirebaseApp.configure()
-//    }
+    let score = ScoreViewModel().scoreSheet
+    let date = ScoreViewModel().dateToString()
     
     var body: some Scene {
         WindowGroup {
-            SideMenuMainView()
+//            SideMenuMainView()
+            OneCardScoreView(score.theme, date: date, maxScore: score.maxScore)
         }
     }
 }
