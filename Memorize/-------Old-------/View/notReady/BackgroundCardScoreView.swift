@@ -17,7 +17,8 @@ struct BackgroundCardScoreView: View {
     
     var body: some View {
         VStack {
-            Rectangle().fill(themeData[theme.current].color).opacity(0.1)
+            Rectangle()
+                .fill(themeData[theme.current].color).opacity(0.1)
                 .cornerRadius(6)
                 .clipShape(CustomCorners(corner: [.topLeft, .bottomRight], radius: 60))
                 .frame(height: 120)

@@ -24,7 +24,7 @@ final class ScoreViewModel: ObservableObject {
     //MARK: Initializer
     
     init() {
-        self.scoreSheet = ScoreModel("no", maxScore: 0)
+        self.scoreSheet = ScoreModel("🧚", maxScore: 0)
 //        self.score = score
         //Настройте привязку score между карточкой id и моделью представления id.
         //Затем сохраните объект cancellables чтобы его можно было отменить позже.
@@ -39,6 +39,12 @@ final class ScoreViewModel: ObservableObject {
     
     func remove() {
 //        repository.remove(score)
+    }
+    
+    func dateToString(_ date: Date) -> String {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "dd/MM/y  HH:mm"
+        return timeFormatter.string(from: date)
     }
     
     func dateToString() -> String {
