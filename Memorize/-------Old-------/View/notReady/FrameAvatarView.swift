@@ -7,13 +7,14 @@
 
 import SwiftUI
 
+
 struct FrameAvatarView: View {
     
-    //MARK: - Properties
+    //MARK: Properties
     
     @Binding var image: UIImage
     
-    //MARK: - Body
+    //MARK: Body
     
     var body: some View {
         Image(uiImage: image)
@@ -31,5 +32,4 @@ struct FrameAvatarView: View {
                         .opacity(0.7))
             .multilineTextAlignment(.center)
     }
-    
 }
